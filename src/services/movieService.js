@@ -12,7 +12,7 @@ export default class movieService{
      * @param {*电影类型} type 
      */
     static getMovilList(obj){
-        let _count=Config.page.pagesize;
+        let _count=obj.count;
         let _start=(obj.pageindex-1)*Config.page.pagesize;
         let _type=obj.type;
         let _q=obj.q||''
@@ -24,6 +24,21 @@ export default class movieService{
                 }).catch((err)=>{
                     reject(err);
                 })
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+
+    /**
+     * 获取电影详情
+     * @param {*电影ID} id 
+     */
+    static getMovieDetail(id){
+        return new Promise((resolve, reject)=>{
+            let _url=`${Config.apiurl.doubanurl.movie}subject/${id}`;
+            FetchApi.fetch(_url).then((data)=>{
+                resolve(data);
             }).catch((err)=>{
                 reject(err);
             })

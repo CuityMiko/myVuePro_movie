@@ -66,7 +66,7 @@
                     <el-carousel :interval="5000" arrow="always" height="400px">
                         <el-carousel-item v-for="banner in coming_soons" :key="banner.id">
                             <div class='banner'>
-                                <img :src="banner.images.large" :alt="banner.title" class="image" width="75%">
+                                <img :src="banner.images.large" :alt="banner.title" class="image" width="75%" style="cursor: pointer;" @click="todetail(banner.id)">
                             </div>
                         </el-carousel-item>
                     </el-carousel>
@@ -163,7 +163,8 @@ export default {
         // 正在热映
         let _movieobj0={
             pageindex:1,
-            type:'in_theaters'
+            type:'in_theaters',
+            count:6
         }
         movieService.getMovilList(_movieobj0).then((data)=>{
             this.in_theaters=data.subjects.slice(0,6);
@@ -177,7 +178,8 @@ export default {
         // 即将上映
         let _movieobj={
             pageindex:1,
-            type:'coming_soon'
+            type:'coming_soon',
+            count:6
         }
         movieService.getMovilList(_movieobj).then((data)=>{
             this.coming_soons=data.subjects.slice(0,6);
@@ -191,7 +193,8 @@ export default {
         // TOP250
         let _movieobj2={
             pageindex:1,
-            type:'top250'
+            type:'top250',
+            count:6
         }
         movieService.getMovilList(_movieobj2).then((data)=>{
             this.top250s=data.subjects.slice(0,6);

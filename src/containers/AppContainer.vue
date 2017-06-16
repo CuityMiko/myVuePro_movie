@@ -28,7 +28,7 @@
                         <el-input
                             placeholder="搜索..."
                             icon="search"
-                            v-model="search"
+                            v-model.trim="search"
                             size="samll"
                             :on-icon-click="tosearch">
                         </el-input>
@@ -37,7 +37,7 @@
                         <router-link to="/home">首 页</router-link>
                     </el-menu-item>
                     <el-menu-item index="3">
-                        <router-link to="/movie/in_theaters">电影榜单</router-link>
+                        <router-link to="/movie/in_theaters/1">电影榜单</router-link>
                     </el-menu-item>
                     <el-menu-item index="4">
                         <router-link to="/about">关于我们</router-link>
@@ -65,7 +65,11 @@ export default {
 
       },
       tosearch(){
-          console.log(this.search)
+          if(this.search.length>0){
+            this.$router.push({path:'/movie/search/1',query: { q: this.search }});
+            this.search="";
+          }else
+            this.$message.warning('请输入搜索内容！');
       }
     }
 }

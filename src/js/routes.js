@@ -16,6 +16,7 @@ export default[
             next();
         }
     },
+    {path:'/movie/detail/:id',component:MovieDetailContainer},
     {
         path:'/movie/:type/:page',
         component:MovieContainer,
@@ -23,7 +24,6 @@ export default[
         //     {path:'detail/:id',component:MovieDetailContainer}
         // ]
     },
-    {path:'/movie/detail/:id',component:MovieDetailContainer},
     {path:'/about',component:AboutContainer},
     {path:'/',redirect:'/home'}, // 如果路由为/的时候跳转到/home路由
     {path:'*',component:NoFindContainer} // 此配置要放在最下面，如果没有匹配到路由则404
