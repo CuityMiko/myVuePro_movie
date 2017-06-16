@@ -49,7 +49,7 @@
         </p>
         <p>
             <el-rate
-                v-model="value3"
+                :value="4"
                 show-text
                 :texts="texts1"
                 >

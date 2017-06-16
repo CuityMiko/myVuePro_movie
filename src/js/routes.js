@@ -17,7 +17,7 @@ export default[
         }
     },
     {
-        path:'/movie/:type',
+        path:'/movie/:type/:page',
         component:MovieContainer,
         // children:[
         //     {path:'detail/:id',component:MovieDetailContainer}
